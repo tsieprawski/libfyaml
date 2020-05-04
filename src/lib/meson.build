@@ -24,6 +24,7 @@ libfyaml = shared_library('fyaml',
     install: true)
 libfyaml_dep = declare_dependency(link_with: libfyaml,
     include_directories: libfyaml_inc)
+pkg.generate(libfyaml)
 
 libfyaml_static = static_library('fyaml',
     libfyaml_src,
