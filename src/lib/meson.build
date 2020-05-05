@@ -17,9 +17,17 @@ libfyaml_src = [
     'fy-utils.c',
     '../xxhash/xxhash.c'
 ]
+
 libfyaml = shared_library('fyaml',
     libfyaml_src,
     include_directories: [libfyaml_inc, libfyaml_prv_inc, xxhash_inc],
     install: true)
 libfyaml_dep = declare_dependency(link_with: libfyaml,
+    include_directories: libfyaml_inc)
+
+libfyaml_static = static_library('fyaml',
+    libfyaml_src,
+    include_directories: [libfyaml_inc, libfyaml_prv_inc, xxhash_inc],
+    install: true)
+libfyaml_static_dep = declare_dependency(link_with: libfyaml_static,
     include_directories: libfyaml_inc)
